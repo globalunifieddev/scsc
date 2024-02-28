@@ -33,10 +33,10 @@ class UserSeeder extends Seeder
               'status'   => 1
             ],
             [
-              'email'    => 'tasiu@gmail.com',
-              'first_name'     => 'Tasiu',
-              'middle_name'     => '',
-              'sur_name'     => 'Nas',
+              'email'    => 'admin@scsc.com',
+              'first_name'     => 'Admin',
+              'middle_name'     => 'Admin',
+              'sur_name'     => 'Admin',
               'password' => Hash::make('12345678'),
               'role'     => 'admin',
               'status'   => 1
