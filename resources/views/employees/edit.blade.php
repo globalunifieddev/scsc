@@ -176,7 +176,7 @@
                 <select name="status" class="form-control" required>
                     <option value="{{ __($employee->status) }}">{{ __($employee->status) }}</option>
                     <option value="Active">Active</option>
-                    <option value="Probabtion">Probabtion</option>
+                    <option value="Probation">Probation</option>
                     <option value="Retired">Retired</option>
                     <option value="Deceased">Deceased</option>
                 </select>
