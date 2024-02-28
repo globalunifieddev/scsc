@@ -12,7 +12,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LocationController;
-use App\Http\Controllers\MdaController;
+use App\Http\Controllers\MDAController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\DisciplineController;

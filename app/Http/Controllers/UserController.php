@@ -9,7 +9,7 @@ use App\Models\Role;
 use App\Models\Location;
 use App\Models\Department;
 use Illuminate\Support\Facades\Hash;
-
+// TO-DO: Rework this whole logic
 class UserController extends Controller
 {
     public function index()
