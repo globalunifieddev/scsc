@@ -29,15 +29,15 @@ class EmployeeImport implements ToModel, WithHeadingRow
             'file_number' => $row['file_number'],
             'dob' => $row['dob'],
             'gender' => $row['gender'],
-            'state' => $row['state'],
+            'state' => $row['state'] ?? 'NILL',
             'lga' => $row['lga'],
-            'highest_qualification' => $row['highest_qualification'],
+            'highest_qualification' => $row['highest_qualification'] ?? 'NILL',
             'first_appointment_date' => $row['first_appointment_date'],
-            'current_rank' => $row['current_rank'],
-            'status' => $row['status'],
+            'current_rank' => $row['current_rank'] ?? 'NIL',
+            'status' => $row['status'] ?? 'Active',
             'added_by' => $this->addedBy,
-            'last_promotion_date' => $row['last_promotion_date'],
-            'status_changed_date' => $row['last_promotion_date']
+            'last_promotion_date' => $row['last_promotion_date'] ?? '1880-01-01',
+            'status_changed_date' => $row['last_promotion_date'] ?? '1880-01-01'
         ]);
     }
 }
