@@ -30,6 +30,7 @@ class UserSeeder extends Seeder
               'sur_name'     => 'Bello',
               'password' => Hash::make('12345678'),
               'role'     => 'admin',
+              'email_verified_at' => now(),
               'status'   => 1
             ],
             [
@@ -38,6 +39,7 @@ class UserSeeder extends Seeder
               'middle_name'     => 'Admin',
               'sur_name'     => 'Admin',
               'password' => Hash::make('12345678'),
+              'email_verified_at' => now(),
               'role'     => 'admin',
               'status'   => 1
             ],
@@ -48,6 +50,7 @@ class UserSeeder extends Seeder
               'sur_name'     => 'User',
               'password' => Hash::make('12345678'),
               'role'     => 'management',
+              'email_verified_at' => now(),
               'status'   => 1
             ],
             [
@@ -57,6 +60,7 @@ class UserSeeder extends Seeder
               'sur_name'     => 'User',
               'password' => Hash::make('12345678'),
               'role'     => 'director',
+              'email_verified_at' => now(),
               'status'   => 1
             ],
           ];
