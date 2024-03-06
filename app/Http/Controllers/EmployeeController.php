@@ -18,8 +18,6 @@ class EmployeeController extends Controller {
         return view('employees.index', compact('mdas'));
     }
 
-  
-
     public function store(Request $request) {
 
         $request->validate([
