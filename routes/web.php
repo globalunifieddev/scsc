@@ -58,9 +58,7 @@ Route::group(['middleware' => ['auth']], function() {
         ->name('employees-upload.show');
     Route::post('employees-upload', [EmployeeController::class, 'uploadEmployees'])
         ->name('employees.upload');
-    Route::get('employees-export', [EmployeeController::class, 'showEmployeeExport'])
-        ->name('employees-export.show');
-    Route::get('employees-export', [EmployeeController::class, 'showEmployeeExport'])
+    Route::get('employees-export/{mdaId?}', [EmployeeController::class, 'showEmployeeExport'])
         ->name('employees-export.show');
     Route::get('employees-retirement/{mdaId?}', [RetirementController::class, 'index'])
         ->name('retirement.show');
@@ -91,6 +89,4 @@ Route::view('transfer-applications/create','transfer-applications/create');
 //Applications
 Route::view('application', 'employment-applications/index');
 Route::view('employment-applications.create','employment-applications.create');
-//
 Route::view('charts', 'graphs/chart');
-//

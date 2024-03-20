@@ -121,9 +121,19 @@ class EmployeeController extends Controller {
         }
     }
 
-    public function showEmployeeExport(){
-        $employees = Employee::all();
-        return view('employees.export', compact('employees'));
+    public function showEmployeeExport($mdaID = 0){
+            
+            if($mdaID === 0){
+                $employees = Employee::latest()->take(1000)->get();
+            }else{
+                $employees =  Employee::where(['mda'=>$mdaID])->get();
+            }
+        
+            $selectedMda = ($mdaID === 0) ? [] : Mda::findOrFail($mdaID);
+            $employeeCount = Employee::count();
+            $mdas = Mda::pluck('name', 'id', 'mda_alias');
+            return view('employees.export', compact('selectedMda','mdas','employees', 'employeeCount'));
+        
     }
 
     public function showRetirement(){
