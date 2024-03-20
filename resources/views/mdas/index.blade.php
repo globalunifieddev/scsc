@@ -21,15 +21,10 @@
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fas fa-edit"></i>
+                            
                             <table>
                                 <tr>
                                     <td><a class="btn btn-success text-right" href="{{ route('mda.create') }}"> Create New MDA</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Search MDA: </td>
-                                    <td><input type="text" placeholder="MDA name/alias" name="" class="form-control"></td>
-                                    <td><button type="submit" name="search" class="btn btn-success form-control">Search</button></td>
                                 </tr>
                             </table>
                             
@@ -107,5 +102,9 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+<script>
+    $(document).ready(function() {
+        $('#scsc').DataTable();
+    });
+</script>
 @stop
