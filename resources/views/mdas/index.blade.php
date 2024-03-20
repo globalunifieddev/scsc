@@ -36,7 +36,7 @@
                     <div class="card-body">
   
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table id="scsc" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>MDA ID</th>
