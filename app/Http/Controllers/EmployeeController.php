@@ -124,7 +124,7 @@ class EmployeeController extends Controller {
     public function showEmployeeExport($mdaID = 0){
             
             if($mdaID === 0){
-                $employees = Employee::latest()->take(1000)->get();
+                $employees = Employee::latest()->take(3000)->get();
             }else{
                 $employees =  Employee::where(['mda'=>$mdaID])->get();
             }
