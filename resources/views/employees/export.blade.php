@@ -10,6 +10,7 @@
                 <div class="inner">
                     <h3> {{$employeeCount}}</h3>
                     <p>All Employees</p>
+                    
                     <br>
                 </div>
             </div>
@@ -47,6 +48,13 @@
 
     <div class="row">
         <div class="col-lg-12">
+            <div class="text-center">
+                <a href="{{ route('download.employees') }}"
+                class="btn btn-secondary flex float-right mb-2">
+                 DOWNLOAD ALL
+             </a>
+            </div>
+
             <div class="h3 text-center">Employees</div>
             <div class="table-responsive">
               <table id="scsc" class="table table-sm">

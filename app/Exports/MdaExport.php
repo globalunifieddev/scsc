@@ -19,7 +19,7 @@ class MdaExport implements FromCollection, WithHeadings, WithStyles
 
     public function collection(): Collection
     {
-        return collect(Mda::all());
+        return collect(Mda::all()->sortBy('name'));
     }
 
     public function headings(): array

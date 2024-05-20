@@ -19,7 +19,7 @@ class EmployeeExports implements FromCollection, WithHeadings, WithStyles
 
     public function collection(): Collection
     {
-        return collect(Employee::all());
+        return collect(Employee::all()->sortBy('mda'));
 
         // return Employee::all()
         //     ->get();
