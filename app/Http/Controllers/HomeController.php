@@ -32,7 +32,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $simpleBackup = SimpleBackup::setDatabase(['defaultdb', 'doadmin', 'AVNS_HW-ufWDlgrrW8PR6aYk', 'db-mysql-scsc-48746-do-user-15904991-0.c.db.ondigitalocean.com'])
+
+        // dd(env('DB_PORT'));
+        $simpleBackup = SimpleBackup::setDatabase([env('DB_DATABASE'), env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST')])
         ->storeAfterExportTo('pathtostore', 'ff.sql');
   dd($simpleBackup);
   if(Auth::user()->hasRole('admin')){
