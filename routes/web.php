@@ -12,7 +12,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LocationController;
-use App\Http\Controllers\MdaController;
+use App\Http\Controllers\MDAController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\DisciplineController;
@@ -46,6 +46,36 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('departments', DepartmentController::class);
     Route::resource('locations', LocationController::class);
     Route::get('home', [HomeController::class, 'index'])->name('home');
+
+    // ROUTES ADDED BY TK
+    Route::resource('mda', MDAController::class);
+    Route::resource('employees', EmployeeController::class);
+    Route::resource('uploads', UploadController::class);
+    Route::resource('transfers', TransferController::class);
+    Route::resource('disciplines', DisciplineController::class);
+    Route::resource('promotions', PromotionController::class);
+    Route::get('employees-upload', [EmployeeController::class, 'showUpload'])
+        ->name('employees-upload.show');
+    Route::post('employees-upload', [EmployeeController::class, 'uploadEmployees'])
+        ->name('employees.upload');
+    Route::get('employees-export/{mdaId?}', [EmployeeController::class, 'showEmployeeExport'])
+        ->name('employees-export.show');
+    Route::get('employees-retirement/{mdaId?}', [RetirementController::class, 'index'])
+        ->name('retirement.show');
+    Route::get('employees-retirement-view/{mda?}/{category?}', [RetirementController::class, 'viewCategory'])
+        ->name('retirement.category.show');
+    Route::get('employees-conferment/{mdaId?}', [ConfermentController::class, 'index'])
+        ->name('conferment.show');
+    Route::get('employees-conferment-view/{mda?}/{category?}', [ConfermentController::class, 'viewCategory'])
+        ->name('conferment.category.show');
+    Route::get('transfer-management/', [TransferController::class, 'showPendingTransfer'])
+        ->name('transfers.show');
+    Route::get('transfer-management-view/{transferID?}', [TransferController::class, 'showManageTransfer'])
+        ->name('transfers.manage');
+    Route::patch('transfer-management-view/{employeeID?}/{transferID?}/{toMda?}', [TransferController::class, 'updateTransferStatus'])
+        ->name('transfers.manage.edit');
+    Route::get('/all-employees/download/all', [EmployeeController::class, 'downloadEmployees'])->name('download.employees');
+    Route::get('/all-mda/download/all', [MDAController::class, 'downloadMda'])->name('download.mda');
 });
 
 //CHANGE PASSWORD
@@ -53,8 +83,6 @@ Route::get('update-password', [App\Http\Controllers\HomeController::class, 'chan
 Route::post('update-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
 
 //Employees
-// Route::view('employees', 'employees/index');
-// Route::view('employees.create', 'employees.create');
 Route::view('export', 'employees/export');
 
 //Transfer
@@ -63,39 +91,4 @@ Route::view('transfer-applications/create','transfer-applications/create');
 //Applications
 Route::view('application', 'employment-applications/index');
 Route::view('employment-applications.create','employment-applications.create');
-//
 Route::view('charts', 'graphs/chart');
-//
-
-
-
-
-// ROUTES ADDED BY TK
-Route::resource('mda', MDAController::class);
-Route::resource('employees', EmployeeController::class);
-Route::resource('uploads', UploadController::class);
-Route::resource('transfers', TransferController::class);
-Route::resource('disciplines', DisciplineController::class);
-Route::resource('promotions', PromotionController::class);
-Route::get('employees-upload', [EmployeeController::class, 'showUpload'])
-    ->name('employees-upload.show');
-Route::post('employees-upload', [EmployeeController::class, 'uploadEmployees'])
-    ->name('employees.upload');
-Route::get('employees-export', [EmployeeController::class, 'showEmployeeExport'])
-    ->name('employees-export.show');
-Route::get('employees-export', [EmployeeController::class, 'showEmployeeExport'])
-    ->name('employees-export.show');
-Route::get('employees-retirement/{mdaId?}', [RetirementController::class, 'index'])
-    ->name('retirement.show');
-Route::get('employees-retirement-view/{mda?}/{category?}', [RetirementController::class, 'viewCategory'])
-    ->name('retirement.category.show');
-Route::get('employees-conferment/{mdaId?}', [ConfermentController::class, 'index'])
-    ->name('conferment.show');
-Route::get('employees-conferment-view/{mda?}/{category?}', [ConfermentController::class, 'viewCategory'])
-    ->name('conferment.category.show');
-Route::get('transfer-management/', [TransferController::class, 'showPendingTransfer'])
-    ->name('transfers.show');
-Route::get('transfer-management-view/{transferID?}', [TransferController::class, 'showManageTransfer'])
-    ->name('transfers.manage');
-Route::patch('transfer-management-view/{employeeID?}/{transferID?}/{toMda?}', [TransferController::class, 'updateTransferStatus'])
-    ->name('transfers.manage.edit');

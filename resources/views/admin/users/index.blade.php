@@ -17,7 +17,7 @@
                         <h3 class="card-title">
                             <i class="fas fa-edit"></i>
                             
-                            <a class="btn btn-success text-right" href="{{ route('users.create') }}"> Create New User</a>
+                            {{-- <a class="btn btn-success text-right" href="{{ route('users.create') }}"> Create New User</a> --}}
                         </h3>
                     </div>
                     

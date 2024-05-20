@@ -90,6 +90,8 @@
                         <option value="Ministry">Ministry</option>
                         <option value="Department">Department</option>
                         <option value="Agency">Agency</option>
+                        <option value="Commission">Commission</option>
+                        <option value="Board">Board</option>
                     </select>
                 </div>
             </div>

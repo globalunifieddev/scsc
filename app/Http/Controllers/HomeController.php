@@ -9,7 +9,8 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Location;
+use App\Models\Employee;
+use App\Models\Mda;
 
 
 class HomeController extends Controller
@@ -31,9 +32,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->hasRole('admin'))
-        {
-            return view('admin.dashboard.index');
+        if(Auth::user()->hasRole('admin')){
+            return $this->showAdminDashboard();
         }
         else if(Auth::user()->hasRole('management'))
         {
@@ -48,6 +48,28 @@ class HomeController extends Controller
             return view('/');
         }
     }
+
+
+    public function showAdminDashboard(){
+        $allEmployeesCount = Employee::all()->count();
+        $probationEmployeesCount = Employee::where('status', 'Probation')->count();
+        $activeEmployeesCount = Employee::where('status', 'Active')->count();
+        $retiredEmployeesCount = Employee::where('status', 'Retired')->count();
+        $activeMaleEmployeesCount = Employee::where('status', 'Active')->where('gender', 'Male')->count();
+        $activeFemaleEmployeesCount = Employee::where('status', 'Active')->where('gender', 'Female')->count();
+        $mdaCount = MDA::count();
+    
+        return view('admin.dashboard.index', compact(
+            'allEmployeesCount',
+            'activeEmployeesCount',
+            'retiredEmployeesCount',
+            'activeMaleEmployeesCount',
+            'activeFemaleEmployeesCount',
+            'probationEmployeesCount',
+            'mdaCount'
+        ));
+    }
+
     //CHANGE PASSWORD
     public function changePassword()
     {

@@ -21,15 +21,10 @@
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fas fa-edit"></i>
+                            
                             <table>
                                 <tr>
                                     <td><a class="btn btn-success text-right" href="{{ route('mda.create') }}"> Create New MDA</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Search MDA: </td>
-                                    <td><input type="text" placeholder="MDA name/alias" name="" class="form-control"></td>
-                                    <td><button type="submit" name="search" class="btn btn-success form-control">Search</button></td>
                                 </tr>
                             </table>
                             
@@ -39,9 +34,16 @@
                     
                     <div class="card">
                     <div class="card-body">
-  
+
+                        <div class="text-center">
+                            <a href="{{ route('download.mda') }}"
+                               class="btn btn-secondary flex float-right mb-2">
+                                DOWNLOAD ALL
+                            </a>
+                        </div>
+                    
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table id="scsc" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>MDA ID</th>
@@ -107,5 +109,9 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+<script>
+    $(document).ready(function() {
+        $('#scsc').DataTable();
+    });
+</script>
 @stop

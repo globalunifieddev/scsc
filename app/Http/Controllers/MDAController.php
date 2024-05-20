@@ -1,14 +1,18 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\MDA;
+use App\Models\Mda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MdaExport;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 
 
 class MDAController extends Controller {
     public function index() {
-        $mdas = MDA::all();
+        $mdas = Mda::all();
         return view('mdas.index', compact('mdas'));
     }
 
@@ -32,15 +36,15 @@ class MDAController extends Controller {
         return redirect()->route('mda.index')->with('success', 'MDA created successfully');
     }
 
-    public function show(MDA $mda) {
+    public function show(Mda $mda) {
         return view('mdas.show', compact('mda'));
     }
 
-    public function edit(MDA $mda) {
+    public function edit(Mda $mda) {
         return view('mdas.show', compact('mda'));
     }
 
-    public function update(Request $request, MDA $mda) {
+    public function update(Request $request, Mda $mda) {
         // Validate the form data
         $request->validate([
             'name' => 'nullable|string',
@@ -57,9 +61,13 @@ class MDAController extends Controller {
         return redirect()->route('mda.index')->with('success', 'MDA updated successfully');
     }
 
-    public function destroy(MDA $mda) {
+    public function destroy(Mda $mda) {
         $mda->delete();
         return redirect()->route('mda.index')->with('success', 'MDA deleted successfully');
+    }
+
+    public function downloadMda(): BinaryFileResponse {
+        return Excel::download(new MdaExport, 'MDAs.xlsx');
     }
 
 
