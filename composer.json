@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "coderatio/simple-backup": "^1.0",
         "guzzlehttp/guzzle": "^7.4",
         "jeroennoten/laravel-adminlte": "^3.8",
         "laravel/framework": "^9.2",

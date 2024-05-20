@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Mda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MdaExport;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 
 
 class MDAController extends Controller {
@@ -60,6 +64,10 @@ class MDAController extends Controller {
     public function destroy(Mda $mda) {
         $mda->delete();
         return redirect()->route('mda.index')->with('success', 'MDA deleted successfully');
+    }
+
+    public function downloadMda(): BinaryFileResponse {
+        return Excel::download(new MdaExport, 'MDAs.xlsx');
     }
 
 

@@ -74,6 +74,8 @@ Route::group(['middleware' => ['auth']], function() {
         ->name('transfers.manage');
     Route::patch('transfer-management-view/{employeeID?}/{transferID?}/{toMda?}', [TransferController::class, 'updateTransferStatus'])
         ->name('transfers.manage.edit');
+    Route::get('/all-employees/download/all', [EmployeeController::class, 'downloadEmployees'])->name('download.employees');
+    Route::get('/all-mda/download/all', [MDAController::class, 'downloadMda'])->name('download.mda');
 });
 
 //CHANGE PASSWORD

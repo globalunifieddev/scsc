@@ -34,7 +34,14 @@
                     
                     <div class="card">
                     <div class="card-body">
-  
+
+                        <div class="text-center">
+                            <a href="{{ route('download.mda') }}"
+                               class="btn btn-secondary flex float-right mb-2">
+                                DOWNLOAD ALL
+                            </a>
+                        </div>
+                    
                     <div class="table-responsive">
                         <table id="scsc" class="table table-bordered">
                             <thead>

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\EmployeeImport;
+use App\Exports\EmployeeExports;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 
 
 class EmployeeController extends Controller {
@@ -139,6 +142,10 @@ class EmployeeController extends Controller {
     public function showRetirement(){
         $employees = Employee::all();
         return view('employees.retirement', compact('employees'));
+    }
+
+    public function downloadEmployees(): BinaryFileResponse {
+        return Excel::download(new EmployeeExports, 'Employees.xlsx');
     }
 }
 
