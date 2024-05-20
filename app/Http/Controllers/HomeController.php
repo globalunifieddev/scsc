@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Employee;
 use App\Models\Mda;
-
+use Coderatio\SimpleBackup\SimpleBackup;
 
 class HomeController extends Controller
 {
@@ -32,7 +32,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->hasRole('admin')){
+        $simpleBackup = SimpleBackup::setDatabase(['defaultdb', 'doadmin', 'AVNS_HW-ufWDlgrrW8PR6aYk', 'db-mysql-scsc-48746-do-user-15904991-0.c.db.ondigitalocean.com'])
+        ->storeAfterExportTo('pathtostore', 'ff.sql');
+  dd($simpleBackup);
+  if(Auth::user()->hasRole('admin')){
             return $this->showAdminDashboard();
         }
         else if(Auth::user()->hasRole('management'))
