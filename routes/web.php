@@ -36,7 +36,7 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class);// temp
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
