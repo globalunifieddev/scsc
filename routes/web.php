@@ -36,11 +36,11 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
+Route::resource('users', UserController::class);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
-    Route::resource('users', UserController::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('departments', DepartmentController::class);
