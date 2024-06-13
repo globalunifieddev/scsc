@@ -36,7 +36,6 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-Route::resource('users', UserController::class);// temp
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
@@ -45,6 +44,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('categories', CategoryController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('locations', LocationController::class);
+    Route::resource('users', UserController::class);// temp
+
     Route::get('home', [HomeController::class, 'index'])->name('home');
 
     // ROUTES ADDED BY TK
