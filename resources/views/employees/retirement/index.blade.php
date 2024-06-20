@@ -24,7 +24,7 @@
             <div class="small-box bg-info">
                 <div class="inner">
                     <h3> {{count($retireesByAge)}}</h3>
-                    <p>Retired by data of birth</p>
+                    <p>Retired by date of birth</p>
                 </div>
                 <div class="icon"><i class="ion ion-person-add"></i></div>
                 <a href="{{route('retirement.category.show')}}?category=dob&mda={{$selectedMda->id ?? ''}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a></div>
